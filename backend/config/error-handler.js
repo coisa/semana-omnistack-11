@@ -1,9 +1,13 @@
+const process = require('process');
+
+const events = require('../src/Event/ErrorEvent');
+
 module.exports = {
-    uncaughtException(err, origin) {
-        console.log('Uncaught Exception:', err, 'origin:', origin);
+    register() {
+        Object.keys(events).forEach(event => process.on(event, events[event]));
     },
 
-    unhandledRejection(reason, promise) {
-        console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+    unregister() {
+        Object.keys(events).forEach(event => process.off(event));
     }
 };
