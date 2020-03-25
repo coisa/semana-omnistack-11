@@ -11,4 +11,4 @@ module.exports = (request, response) => {
     }
 
     return response.status(204).send();
-}
+};

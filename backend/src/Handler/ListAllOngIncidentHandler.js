@@ -6,4 +6,4 @@ module.exports = async (request, response) => {
     console.log('Listing ONG Incidents:', ongIncidents);
 
     return response.json(ongIncidents);
-}
+};

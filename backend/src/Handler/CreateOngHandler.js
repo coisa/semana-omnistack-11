@@ -8,4 +8,4 @@ module.exports = async (request, response) => {
     response.status(201);
 
     return response.json({ id: id });
-}
+};

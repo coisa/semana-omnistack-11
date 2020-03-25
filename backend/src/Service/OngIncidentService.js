@@ -1,20 +1,19 @@
-const crypto = require('crypto');
-
 const connection = require('../Db/Connection');
+
 const table = connection('ong_incidents');
 
 module.exports = {
-    async listAll() {
+    async listAll () {
         return await table.select('*');
     },
 
-    async create(
+    async create (
         ong_id,
         title,
         description,
         value
     ) {
-        const [ insertedId ] = await table.insert({
+        const [insertedId] = await table.insert({
             ong_id,
             title,
             description,
@@ -24,7 +23,7 @@ module.exports = {
         return insertedId;
     },
 
-    async delete(
+    async delete (
         id,
         ong_id
     ) {
