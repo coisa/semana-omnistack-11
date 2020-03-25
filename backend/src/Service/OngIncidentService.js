@@ -7,27 +7,18 @@ module.exports = {
         return await table.select('*');
     },
 
-    async create (
-        ong_id,
-        title,
-        description,
-        value
-    ) {
-        const [insertedId] = await table.insert({
-            ong_id,
-            title,
-            description,
-            value
-        });
+    async create (ong_id, title, description, value) {
+        const values = { ong_id, title, description, value };
+
+        const [insertedId] = await table.insert(values);
+
+        console.log('ONG Incident created on ID:', id, 'with values:', values);
 
         return insertedId;
     },
 
-    async delete (
-        id,
-        ong_id
-    ) {
-        const incident = table.select('ong_id')
+    async delete (id, ong_id) {
+        const incident = await table.select('ong_id')
             .where('id', id)
             .first();
 
